@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <title>Hello</title> 
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Objekter</h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Navn: <input type="text" id="navn"> </p>
+                <p>Alder: <input type="number" id="alder"></p>
+                <p><input type="submit" value="Legg inn" id="sendInn"> <input type="button" value="Skriv ut alle" id="skrivUt"></p>
+            </div>
+            <div class="col-sm-6">
+                <div id="utskrift"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+    
+<script>
+    
+    var personer = [];
+    var navn, alder;
+    
+    class person{
+        constructor(navn, alder){
+            this.navn = navn;
+            this.alder = alder;
+        }
+                
+    }
+    
+    function leggInn(){
+        navn = document.getElementById("navn");
+        alder = document.getElementById("alder");
+        
+        console.log(navn.value);
+        console.log(alder.value);
+        
+        personer.push(new person(navn.value, alder.value));
+        
+        navn.value = "";
+        alder.value= "";
+    }
+    
+    function skrivUt(){
+        for(i = 0; i < personer.length; i++){
+            document.getElementById("utskrift").innerHTML += personer[i].navn + " " + personer[i].alder + "<br>";
+        }
+        
+    }
+    
+    document.getElementById("sendInn").addEventListener("click", leggInn);
+    document.getElementById("skrivUt").addEventListener("click", skrivUt);
+        
+    
+    
+</script>
+
+</html>
